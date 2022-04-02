@@ -14,6 +14,7 @@ public class BulletController : MonoBehaviour
     private Coroutine _lifeTimeCoroutine;
 
 
+    // 
     public void BulletControllerInit(IEnumerable<GameObject> targets,float deadY, PhysicMaterial material)
     {
         if (targets != null)
@@ -92,6 +93,7 @@ public class BulletController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        // такое решение с предварительным пробросом целей работает, но очень плохо масштабируется, лучше избегать такой вариант.
         if (Targets.Contains(collision.gameObject))
         {
             var targetScript = collision.gameObject.GetComponent<TargetController>();

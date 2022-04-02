@@ -70,6 +70,7 @@ public class GunController : MonoBehaviour
 
     private void BulletPoolInit()
     {
+        // Если инициализировать список при объявлении, можно полностью избежать следующей строки. Если список пустой, foreach не будет выполнен и не выдаст ошибку.
         if (_bullets != null && _bullets.Count > 0)
         {
             foreach(var bullet in _bullets)
@@ -78,6 +79,7 @@ public class GunController : MonoBehaviour
             }
         }
 
+        // можно также использовать _bullets.Clear()
         _bullets = new List<GameObject>();
 
         for (int i = 0; i < _bulletPoolSize; i++)

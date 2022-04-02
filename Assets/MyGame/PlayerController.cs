@@ -9,7 +9,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GunController _gun;
 
+    // При отсутствии любого из объектов с атрибутом SerialisedField будет исключение в рантайме, возможно, этот комментарий избыточен.
     //Make sure to attach these Buttons in the Inspector
+    
     [SerializeField]
     private Button _restartButton;
 
@@ -41,6 +43,8 @@ public class PlayerController : MonoBehaviour
 
         foreach (var device in leftHandedControllers)
         {
+            // Также можно использовать Debug.LogFormat(), или даже Debug.Log($""), запись получится более емкой, например
+            //Debug.Log($"Device name {device.name} has characteristics {device.characteristics.ToString()}");
             Debug.Log(string.Format("Device name '{0}' has characteristics '{1}'", device.name, device.characteristics.ToString()));
             _device = device;
             break;
@@ -52,6 +56,7 @@ public class PlayerController : MonoBehaviour
         Fire();
     }
 
+    // Если методы не используются, их лучше удалять, либо указать конкретные кейсы, при которых методы необходимы. Это уменьшает кодовую базу.
     void FireCallback(InputAction.CallbackContext context)
     {
         if (_canShoot && context.started)
@@ -63,10 +68,11 @@ public class PlayerController : MonoBehaviour
 
     void Fire()
     {
+        // длинные условия в рамках if() можно выделять в отдельные методы или локальные переменные, чтобы сужать контекст и упрощать читаемость кода.
         if (_canShoot 
-                && _device.isValid
-                && _device.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out bool triggerValue) 
-                && triggerValue)
+            && _device.isValid
+            && _device.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out bool triggerValue) 
+            && triggerValue)
         {
             Debug.Log("Fire!");
             _gun.Shoot(_handPos.position, _handPos.transform.forward);

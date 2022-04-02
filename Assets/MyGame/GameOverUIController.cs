@@ -10,7 +10,7 @@ public class GameOverUIController : MonoBehaviour
         EventManager.onGameOver += () => SetObjectStatus(true);
         EventManager.onRestart += () => SetObjectStatus(false);
     }
-
+    
     private void SetObjectStatus(bool isActive)
     {
         gameObject.SetActive(isActive);

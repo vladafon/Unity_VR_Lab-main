@@ -15,6 +15,7 @@ public class TargetController : MonoBehaviour
     [SerializeField]
     private float _deadY = -10;
 
+    // неконсистентный code style, но похоже, что просто торопился.
     public void Shooted()
     {
         _renderer.material.color = Color.green;
