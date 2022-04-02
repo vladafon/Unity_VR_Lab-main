@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     // При отсутствии любого из объектов с атрибутом SerialisedField будет исключение в рантайме, возможно, этот комментарий избыточен.
     //Make sure to attach these Buttons in the Inspector
     
+    // с учетом того, что есть специальный объект для работы с UI, работу с этой кнопкой стоило было вынести.
     [SerializeField]
     private Button _restartButton;
 
