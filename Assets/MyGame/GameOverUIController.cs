@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameOverUIController : MonoBehaviour
 {
+    // 5-1-7
     void Start()
     {
         gameObject.SetActive(false);
